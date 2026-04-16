@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة أ/ أحمد رجب</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <section id="authScreen" class="auth-screen">
+      <header class="hero auth-hero">
+        <nav class="topbar">
+          <div class="brand">
+            <span class="brand-badge">AR</span>
+            <div>
+              <p class="eyebrow">منصة عربية للمدرس</p>
+              <h1>منصة أ/ أحمد رجب</h1>
+            </div>
+          </div>
+        </nav>
+
+        <section class="hero-grid">
+          <div class="hero-copy">
+            <p class="section-tag">تعليم منظم وآمن</p>
+            <h2>صفحة دخول أولاً، ثم لوحة حصص كاملة، وشاشة تشغيل مستقلة لكل حصة.</h2>
+            <p class="hero-text">
+              المنصة الآن تدعم إدارة كاملة من الأدمن، شحن أكواد من خلال إيصال وتحويل واتساب، وأكواد قوية للحصص، ومعرّف ثابت لكل طالب يظهر فوق الفيديو.
+            </p>
+            <div class="hero-points">
+              <span>صفحة شحن أكواد</span>
+              <span>أدمن يتحكم في كل شيء</span>
+              <span>مشغل منفصل للحصة</span>
+            </div>
+          </div>
+
+          <aside class="auth-card">
+            <div class="tabs">
+              <button class="tab-btn active" type="button" data-tab="login">دخول</button>
+              <button class="tab-btn" type="button" data-tab="register">حساب جديد</button>
+            </div>
+
+            <form id="loginForm" class="auth-form active">
+              <label>
+                <span>اسم المستخدم</span>
+<input name="identifier" type="text" placeholder="اكتب اسم المستخدم" autocomplete="username" required>
+              </label>
+              <label>
+                <span>كلمة المرور</span>
+                <input name="password" type="password" placeholder="••••••••" required>
+              </label>
+              <button class="primary-btn" type="submit">دخول المنصة</button>
+            </form>
+
+            <form id="registerForm" class="auth-form">
+              <p class="hero-text compact-text">إنشاء الحساب يتم من صفحة مستقلة فيها بيانات الطالب وولي الأمر بالكامل.</p>
+              <button id="openRegisterPageBtn" class="primary-btn" type="button">فتح صفحة التسجيل</button>
+            </form>
+
+            <div id="authMessage" class="message-box" aria-live="polite"></div>
+          </aside>
+        </section>
+      </header>
+    </section>
+
+    <section id="registerScreen" class="subpage-screen hidden">
+      <div class="subpage-header">
+        <button id="backFromRegisterBtn" class="ghost-btn" type="button">رجوع</button>
+        <div>
+          <p class="section-tag">حساب جديد</p>
+          <h2>تسجيل طالب جديد</h2>
+        </div>
+      </div>
+
+      <section class="panel recharge-panel">
+        <form id="registerDetailsForm" class="teacher-form register-grid">
+          <label>
+            <span>اسم الطالب</span>
+            <input name="name" type="text" placeholder="الاسم الكامل" required>
+          </label>
+          <label>
+            <span>رقم الطالب</span>
+            <input name="studentPhone" type="tel" placeholder="01xxxxxxxxx" required>
+          </label>
+          <label>
+            <span>رقم الأب</span>
+            <input name="fatherPhone" type="tel" placeholder="01xxxxxxxxx" required>
+          </label>
+          <label>
+            <span>رقم الأم</span>
+            <input name="motherPhone" type="tel" placeholder="01xxxxxxxxx" required>
+          </label>
+          <label>
+            <span>اسم المستخدم</span>
+<input name="identifier" type="text" placeholder="username" autocomplete="username" required>
+          </label>
+          <label>
+            <span>كلمة المرور</span>
+            <input name="password" type="password" placeholder="8 أحرف أو أكثر" minlength="8" required>
+          </label>
+          <button class="primary-btn" type="submit">إنشاء الحساب</button>
+        </form>
+        <div id="registerDetailsMessage" class="message-box" aria-live="polite"></div>
+      </section>
+    </section>
+
+    <section id="dashboardScreen" class="dashboard-screen hidden">
+      <header class="hero dashboard-hero">
+        <nav class="topbar">
+          <div class="brand">
+            <span class="brand-badge">AR</span>
+            <div>
+              <p class="eyebrow">لوحة الحصص</p>
+              <h1>حصص أ/ أحمد رجب</h1>
+            </div>
+          </div>
+          <div class="top-actions">
+            <button id="rechargeNavBtn" class="ghost-btn" type="button">شحن الأكواد</button>
+            <div id="userChip" class="user-chip hidden"></div>
+            <button id="logoutBtn" class="ghost-btn hidden" type="button">تسجيل خروج</button>
+          </div>
+        </nav>
+      </header>
+
+      <section class="dashboard-banner">
+        <div class="banner-copy">
+          <p class="section-tag">المنهج الكامل</p>
+          <h2>منصة عربية منظمة للحصص والمراجعات والواجبات</h2>
+          <p>
+            نفس روح منصات المدرسين الحديثة: تقسيم واضح، كروت مرتبة، حالة فتح لكل حصة، ومشاهدة محمية داخل تجربة سهلة للطالب.
+          </p>
+          <div class="hero-points">
+            <span>شرح + مراجعة</span>
+            <span>أكواد دخول للحصص</span>
+            <span>تتبع حالة الفتح</span>
+          </div>
+        </div>
+        <div class="banner-panel">
+          <div class="mini-stat">
+            <strong id="heroLessonsCount">0</strong>
+            <span>إجمالي الحصص</span>
+          </div>
+          <div class="mini-stat">
+            <strong id="heroUnlockedCount">0</strong>
+            <span>حصص مفتوحة</span>
+          </div>
+          <div class="mini-stat">
+            <strong id="heroLockedCount">0</strong>
+            <span>حصص مقفولة</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-strip">
+        <article class="stat-card">
+          <p>المادة الحالية</p>
+          <strong id="activeSubjectStat">لغة عربية</strong>
+        </article>
+        <article class="stat-card">
+          <p>الحصة المختارة</p>
+          <strong id="activeLessonStat">لم يتم الاختيار</strong>
+        </article>
+        <article class="stat-card">
+          <p>حالة الوصول</p>
+          <strong id="activeStatusStat">مقفولة</strong>
+        </article>
+      </section>
+
+      <main id="contentGrid" class="content-grid">
+        <section class="panel lessons-panel">
+          <div class="panel-head">
+            <div>
+              <p class="section-tag">خانة الحصص</p>
+              <h3>الحصص المتاحة</h3>
+            </div>
+            <p id="lessonStats" class="panel-note">اختر حصة ثم افتحها بالكود الخاص بها.</p>
+          </div>
+
+          <div id="lessonsTabs" class="lessons-tabs"></div>
+          <div id="lessonsGrid" class="lessons-grid"></div>
+        </section>
+
+        <aside class="side-stack">
+          <section class="panel access-panel">
+            <div class="panel-head">
+              <div>
+                <p class="section-tag">فتح الحصة</p>
+                <h3>اكتب كود الحصة</h3>
+              </div>
+            </div>
+
+            <div id="selectedLessonBox" class="selected-lesson">
+              اختر حصة من الأعلى لعرض تفاصيلها هنا.
+            </div>
+
+            <form id="accessForm" class="access-form">
+              <label>
+                <span>كود الحصة</span>
+                <input id="lessonCodeInput" type="text" placeholder="مثال: ARB-9X72-KQ41-2026" autocomplete="off">
+              </label>
+              <button class="primary-btn" type="submit">فتح الحصة</button>
+            </form>
+            <div id="accessMessage" class="message-box" aria-live="polite"></div>
+          </section>
+
+          <section id="teacherPanel" class="panel teacher-panel hidden">
+            <div class="panel-head">
+              <div>
+                <p class="section-tag">لوحة الأدمن</p>
+                <h3>إدارة الحصص والتحكم الكامل</h3>
+              </div>
+            </div>
+
+            <form id="teacherForm" class="teacher-form">
+              <input id="editingLessonId" name="editingLessonId" type="hidden">
+              <label>
+                <span>اسم الحصة</span>
+                <input name="title" type="text" placeholder="حصة المراجعة النهائية" required>
+              </label>
+              <label>
+                <span>المادة</span>
+                <input name="subject" type="text" placeholder="لغة عربية" required>
+              </label>
+              <label>
+                <span>المدة</span>
+                <input name="duration" type="text" placeholder="90 دقيقة" required>
+              </label>
+              <label>
+                <span>رابط فيديو</span>
+                <textarea name="videoUrl" rows="4" placeholder="ضع كل رابط فيديو في سطر مستقل"></textarea>
+              </label>
+              <label>
+                <span>أو ارفع فيديو تجريبي</span>
+                <input id="videoFileInput" name="videoFile" type="file" accept="video/*" multiple>
+              </label>
+              <label>
+                <span>أكواد الحصة</span>
+                <textarea name="code" rows="4" placeholder="اكتب كل كود في سطر مستقل&#10;ARB-9X72-KQ41-2026&#10;ARB-7L55-XP20-2026"></textarea>
+              </label>
+              <label>
+                <span>الوصف</span>
+                <textarea name="description" rows="4" placeholder="اكتب وصفًا مختصرًا للحصة" required></textarea>
+              </label>
+              <button id="saveLessonBtn" class="primary-btn" type="submit">حفظ الحصة</button>
+              <button id="cancelEditLessonBtn" class="ghost-btn hidden" type="button">إلغاء التعديل</button>
+            </form>
+            <div id="teacherMessage" class="message-box" aria-live="polite"></div>
+            <section class="students-panel">
+              <div class="panel-head">
+                <div>
+                  <p class="section-tag">حسابات الطلاب</p>
+                  <h3>كل بيانات الطلاب المسجلين</h3>
+                </div>
+              </div>
+              <div id="studentsTable" class="students-table"></div>
+            </section>
+          </section>
+        </aside>
+      </main>
+    </section>
+
+    <section id="rechargeScreen" class="subpage-screen hidden">
+      <div class="subpage-header">
+        <button id="backFromRechargeBtn" class="ghost-btn" type="button">رجوع</button>
+        <div>
+          <p class="section-tag">شحن الأكواد</p>
+          <h2>إرسال إيصال التحويل للإدمن</h2>
+        </div>
+      </div>
+
+      <section class="panel recharge-panel">
+        <div class="recharge-card">
+          <p class="section-tag">رقم إنستا باي</p>
+          <h3 class="pay-number">01205030765</h3>
+          <p class="panel-note">بعد التحويل، أرفق صورة الإيصال ثم اضغط إرسال إلى واتساب الأدمن.</p>
+        </div>
+
+        <form id="rechargeForm" class="teacher-form">
+          <label>
+            <span>معرف الطالب</span>
+            <input id="studentIdPreviewInput" type="text" readonly>
+          </label>
+          <label>
+            <span>إرفاق الإيصال</span>
+            <input id="receiptInput" type="file" accept="image/*,.pdf" required>
+          </label>
+          <button class="primary-btn" type="submit">إرسال إلى واتساب الأدمن</button>
+        </form>
+        <div id="rechargeMessage" class="message-box" aria-live="polite"></div>
+      </section>
+    </section>
+
+    <section id="playerScreen" class="subpage-screen hidden">
+      <div class="subpage-header">
+        <button id="backFromPlayerBtn" class="ghost-btn" type="button">رجوع للحصص</button>
+        <div>
+          <p class="section-tag">مشغل الحصة</p>
+          <h2 id="playerPageTitle">اسم الحصة</h2>
+        </div>
+      </div>
+
+      <section class="panel player-page-panel">
+        <div class="viewer-meta">
+          <span id="viewerSubject"></span>
+          <span id="viewerDuration"></span>
+          <span id="viewerCode"></span>
+          <span id="viewerStudentId"></span>
+        </div>
+        <div id="playerVideoTabs" class="lessons-tabs"></div>
+
+        <div id="videoShell" class="video-shell">
+          <div id="watermarkLayer" class="watermark-layer hidden"></div>
+          <div id="persistentStudentId" class="persistent-student-id hidden"></div>
+          <div id="shieldOverlay" class="shield-overlay hidden">
+            <div class="shield-card">
+              <strong>تم تفعيل وضع الحماية</strong>
+              <p id="shieldReason">تم إخفاء المحتوى لحماية الحصة.</p>
+              <button id="resumeLessonBtn" class="primary-btn" type="button">استئناف الحصة</button>
+            </div>
+          </div>
+          <iframe
+            id="lessonFrame"
+            src=""
+            title="Lesson video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          ></iframe>
+          <video id="lessonVideo" class="html-video hidden" controls controlsList="nodownload noplaybackrate noremoteplayback" disablePictureInPicture playsinline></video>
+          <button id="customFullscreenBtn" class="fullscreen-btn" type="button">ملء الشاشة</button>
+        </div>
+        <p class="security-note">معرف الطالب يظهر فوق الفيديو حتى أثناء ملء الشاشة باستخدام زر المنصة.</p>
+        <p id="viewerDescription" class="viewer-description"></p>
+      </section>
+    </section>
+
+    <div id="whatsAppNoticeModal" class="modal hidden">
+      <div class="modal-card">
+        <h3>تنبيه مهم جدًا</h3>
+        <p>
+          لازم إرسال الإيصال للأدمن على واتساب حتى يتم مراجعة التحويل وإرسال كود الحصة. سيتم الآن فتح واتساب برسالة جاهزة، وبعدها أرسل الإيصال يدويًا داخل المحادثة.
+        </p>
+        <div class="modal-actions">
+          <button id="confirmWhatsAppBtn" class="primary-btn" type="button">فتح واتساب</button>
+          <button id="cancelWhatsAppBtn" class="ghost-btn" type="button">إلغاء</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      Developed by <a href="https://lnk.bio/Carlos_Ibrahim" target="_blank" rel="noreferrer">Carlos Ibrahim</a>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
